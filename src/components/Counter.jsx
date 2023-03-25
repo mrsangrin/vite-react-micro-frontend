@@ -1,5 +1,7 @@
-import styled from "@emotion/styled";
 import { useState } from "react";
+import styled from "@emotion/styled";
+import { handleClick } from "../helpers/buttonsEventHandlers";
+
 import "./Counter.css";
 
 
@@ -15,14 +17,7 @@ const BtnDiminish = styled.button`
 const Counter = () => {
     const [counter, setCounter] = useState(5);
     
-    const handleAdd = () => {
-      setCounter(counter + 1);
-    };
 
-    const handleDiminish = () => {
-      setCounter(counter - 1);
-    };
-    
     return (
       <>
         <h1 className="title"> Counter: {counter}</h1>
@@ -32,10 +27,19 @@ const Counter = () => {
             color: "lightgreen",
             fontSize: "2rem"
           }}
-          onClick={handleAdd}>Add</button>
+          onClick={ 
+            () => {
+              setCounter(handleClick(counter, 1))
+            }
+          }>Add</button>
+          
           <BtnDiminish 
             className="button"
-            onClick={handleDiminish}>Diminish</BtnDiminish>
+            onClick={ 
+              () => {
+                setCounter(handleClick(counter, -1)) 
+              }
+            }>Diminish</BtnDiminish>
       </>
     );
 };
