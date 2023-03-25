@@ -5,8 +5,7 @@ export const useFetchUsers = () => {
 
     const getUsers = async () => {
         const usersResponse = await fetch("https://jsonplaceholder.typicode.com/users");
-        const usersData = await usersResponse.json();
-        console.log(usersData);
+        const usersData = await usersResponse.json(); 
         setUsers(usersData);
     };
 

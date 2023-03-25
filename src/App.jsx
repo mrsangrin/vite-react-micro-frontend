@@ -1,11 +1,14 @@
+import { lazy, Suspense } from "react";
 import Counter from "./components/Counter"
-import Users from "./components/Users";
+const Users = lazy(() => import("./components/Users"));
 
 const App = () => {
   return(
     <>
       <Counter/>
-      <Users></Users>
+      <Suspense fallback={ <div>Loading...</div>}>
+        <Users/>
+      </Suspense>
     </>
   )
 };
